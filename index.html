@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Видеоплеер</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { text-align: center; background: #222; color: white; padding: 20px; }
+        video { width: 100%; max-width: 560px; border-radius: 10px; }
+        button { padding: 10px 20px; font-size: 18px; border: none; background: #08c; color: white; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Смотри видео!</h2>
+    <video controls>
+        <source src="https://yourserver.com/video.mp4" type="video/mp4">
+        Ваш браузер не поддерживает HTML5-видео.
+    </video>
+    <br><br>
+    <button onclick="Telegram.WebApp.close()">Закрыть</button>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand();  // Разворачиваем WebApp на весь экран
+    </script>
+</body>
+</html>
 
