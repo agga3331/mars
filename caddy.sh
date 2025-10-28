@@ -60,7 +60,6 @@ if ! command -v xcaddy >/dev/null 2>&1; then
 else
     yellow "✅ xcaddy уже установлен: $(xcaddy version)"
 fi
-
 # ==========================
 # Сборка Caddy с Layer4
 # ==========================
