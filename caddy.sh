@@ -90,34 +90,3 @@ sudo tee /etc/caddy/Caddyfile >/dev/null <<'EOF'
             @reality tls sni ozon.com
             route @reality {
                 proxy 127.0.0.1:8443
-            }
-            route {
-                proxy 127.0.0.1:8443
-            }
-        }
-    }
-}
-
-uk.marss.pro {
-    reverse_proxy 127.0.0.1:4443 {
-        transport http {
-            tls_insecure_skip_verify
-        }
-    }
-}
-EOF
-
-# ==========================
-# Проверка и перезагрузка
-# ==========================
-green "[7/9] Проверка Caddyfile..."
-caddy validate --config /etc/caddy/Caddyfile | tee -a "$LOG_FILE"
-caddy fmt --overwrite /etc/caddy/Caddyfile
-caddy validate --config /etc/caddy/Caddyfile | tee -a "$LOG_FILE"
-
-green "[8/9] Перезагрузка Caddy..."
-sudo systemctl reload caddy
-sudo systemctl status caddy --no-pager | tee -a "$LOG_FILE"
-
-green "✅ Установка и настройка Caddy с Layer4 завершена!"
-green "📄 Лог: $LOG_FILE"
